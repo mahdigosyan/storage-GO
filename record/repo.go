@@ -30,6 +30,7 @@ func (p *postgresRepo) Set(ctx context.Context, record *domain.Record) error {
 	return p.db.WithContext(ctx).Save(convertToModel(record)).Error
 }
 
+
 func (p *postgresRepo) Get(ctx context.Context, key string) (*domain.Record, error) {
 	var r record
 	err := p.db.WithContext(ctx).Where("key = ?", key).First(&r).Error
